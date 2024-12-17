@@ -44,6 +44,14 @@ encodeForm *initencodeForm(uint8_t *recData) {
   }
   return encodebuffer;
 }
+void freeEncodeForm(encodeForm *encodebuffer) {
+  if (encodebuffer == NULL) {
+    printf("encodebuffer == NULL ");
+    return;
+  }
+  free(encodebuffer);
+  printf("free encodeForm success");
+}
 void printfreqTable(uint16_t *freqtable) {
   for (int i = 0; i < MAX_TABLE; i++) {
     if (freqtable[i] > 0) {
@@ -124,6 +132,7 @@ void printhuffCodeBook() {
     }
   }
 }
+
 uint8_t *decompressProcess(uint8_t *recData) {
   encodeForm *encodebuffer = initencodeForm(recData);
   printcodeForm(encodebuffer);
@@ -141,5 +150,9 @@ uint8_t *decompressProcess(uint8_t *recData) {
   printf("decodelen = %d\r\n", decodelen);
   printf("Original data size: %d\n", encodebuffer->orginalDatalength);
   uint8_t *decodeData = decodestart(huffroot, encodebuffer, decodelen);
+  freeCodeBook(CodeBook, MAX_TABLE);
+  freeHuffTree(huffroot);
+  freeHeap(minheap);
+  freeEncodeForm(encodebuffer);
   return decodeData;
 }
