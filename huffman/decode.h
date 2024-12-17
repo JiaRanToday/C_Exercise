@@ -16,13 +16,13 @@ typedef struct BitMap {
   uint8_t *bits;
   int size;
 } BitMap;
-encodeForm *initencodeForm(uint8_t *recData);
-void printcodeForm(encodeForm *encodebuffer);
-uint8_t *decodestart(huffTreeNode *huffroot, encodeForm *encodebuffer,
-                     int huffdatalen);
-void printhuffCodeBook();
+// encodeForm *initencodeForm(uint8_t *recData);
+// void printcodeForm(encodeForm *encodebuffer);
+// uint8_t *decodestart(huffTreeNode *huffroot, encodeForm *encodebuffer,
+                     // int huffdatalen);
+// void printhuffCodeBook();
 uint8_t *decompressProcess(uint8_t *recData);
-void setBit(BitMap *map, int bitpos);
-void clearbit(BitMap *map, int bitpos);
-uint8_t getBit(const BitMap *map, int bitpos);
+// void setBit(BitMap *map, int bitpos);
+// void clearbit(BitMap *map, int bitpos);
+// uint8_t getBit(const BitMap *map, int bitpos);
 #endif // !DECODE_H_
