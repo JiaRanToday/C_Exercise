@@ -1,5 +1,0 @@
-add a file local
-add a file cloud
-add a file local + 1
-
- 
