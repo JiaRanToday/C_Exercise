@@ -1,4 +1,3 @@
-这是第一次测试
-释放了decode的临时堆内存
-测试本地副分支直接推动到远程库主分支
-测试步骤错误,重新测试
+# 这是我的个人C语言练习库
++ huffman是一个完整可用的C语言实现的压缩算法
++ + huffman 在 encode.c 只需要调用 "compress函数" 压缩 在decode.c 只需要调用 "decompress函数" 解压缩
