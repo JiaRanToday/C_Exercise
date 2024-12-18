@@ -10,4 +10,23 @@ typedef struct mathFunction {
   void *function_properties;
 } mathFunction;
 
+typedef enum { SINGLEVARIBLE = 1, DOUBLEVARIBLE, THREEBLEVARIBLE } varibletype;
+typedef struct {
+  varibletype type;
+  double x;
+} single_varible;
+
+typedef struct {
+  varibletype type;
+  double x;
+  double y;
+} double_varible;
+
+typedef struct {
+  varibletype type;
+  double x;
+  double y;
+  double z;
+} threeble_varible;
+
 #endif

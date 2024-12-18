@@ -4,11 +4,21 @@
 #include <stdlib.h>
 #include <string.h>
 
-mathFunction *function = NULL;
+static mathFunction *function = NULL;
 
-double func_v1(double x) { return 2; }
-void initMathFunction() {
-  function = createFunction();
-  function->function_properties = NULL;
-  func
+mathFunction *createFunction() {
+  mathFunction *func = (mathFunction *)malloc(sizeof(mathFunction));
+  if (func == NULL) {
+    printf("createFunction malloc failed\r\n");
+    return NULL;
+  }
+  return func;
+}
+void destoryFunction(mathFunction *func) {
+  if (func->function_properties != NULL || func->independent_varible != NULL ||
+      func->func != NULL) {
+    printf("destoryFunction free failed\r\n");
+    return;
+  }
+  free(func);
 }
