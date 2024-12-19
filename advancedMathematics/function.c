@@ -22,3 +22,8 @@ void destoryFunction(mathFunction *func) {
   }
   free(func);
 }
+void definefuncv1() {
+  mathFunction *func = createFunction();
+  single_varible *varible = (varible *)malloc(sizeof(single_varible));
+  func->independent_varible =
+}

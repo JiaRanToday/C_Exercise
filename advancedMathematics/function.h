@@ -29,4 +29,8 @@ typedef struct {
   double z;
 } threeble_varible;
 
+typedef struct {
+  double demain_start;
+  double demain_end;
+} funcv1_properties;
 #endif
