@@ -10,7 +10,7 @@ typedef struct Node {
 } Node;
 typedef enum { ERROR = -1, FALSE, TRUE } Status;
 typedef struct Node *Linklist;
-Status GetElem(Linklist L, int i, ElemType *e) {
+Status GetElem(Linklist *L, int i, ElemType *e) {
   if (L == NULL || i < 1) {
     return ERROR;
   }
