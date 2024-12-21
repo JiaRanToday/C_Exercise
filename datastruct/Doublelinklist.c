@@ -10,3 +10,5 @@ typedef struct Node {
 
 typedef enum { ERROR = -1, FALSE, TRUE } Status;
 typedef Node *DoubleLinkList;
+
+Status GetElem()
