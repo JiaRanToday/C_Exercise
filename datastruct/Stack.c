@@ -11,7 +11,7 @@ typedef struct {
 typedef enum { ERROR = -1, FALSE, TRUE } Status;
 Status InitStack(SqStack *S) {
   if (S == NULL) {
-    S = (SqStack *)malloc(sizeof(SqStack));
+    return ERROR;
   }
   memset(S->data, 0, MAX_STACK);
   S->top = -1;
@@ -35,10 +35,7 @@ Status StackEmpty(SqStack *S) {
   if (S == NULL) {
     return ERROR;
   }
-  if (S->top == -1) {
-    return TRUE;
-  }
-  return FALSE;
+  return (S->top == -1) ? TRUE : FALSE;
 }
 Status GetTop(SqStack *S, SElemType *e) {
   if (S == NULL || S->top == -1) {
@@ -51,16 +48,14 @@ Status Push(SqStack *S, SElemType e) {
   if (S->top == MAX_STACK - 1) {
     return ERROR;
   }
-  S->top++;
-  S->data[S->top] = e;
+  S->data[++(S->top)] = e;
   return TRUE;
 }
 Status pop(SqStack *S, SElemType *e) {
-  if (S->top == -1) {
+  if (S == NULL && S->top == -1) {
     return ERROR;
   }
-  *e = S->data[S->top];
-  S->top--;
+  *e = S->data[S->top--];
   return TRUE;
 }
 int StackLength(SqStack *S) { return S->top + 1; }
