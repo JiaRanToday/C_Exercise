@@ -1,14 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-#define MAX_STACK 256
-typedef int SElemType;
-typedef struct {
-  SElemType data[MAX_STACK];
-  int top;
-} SqStack;
-typedef enum { ERROR = -1, FALSE, TRUE } Status;
+#include "Stack.h"
 Status InitStack(SqStack *S) {
   if (S == NULL) {
     return ERROR;
