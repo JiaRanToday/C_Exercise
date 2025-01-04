@@ -1,15 +1,15 @@
 #ifndef _STACK_H_
 #define _STACK_H_
+#include "perror.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #define MAX_STACK 256
-typedef int SElemType;
+typedef char SElemType;
 typedef struct {
   SElemType data[MAX_STACK];
   int top;
 } SqStack;
-typedef enum { ERROR = -1, FALSE, TRUE } Status;
 Status InitStack(SqStack *S);
 Status ClearStack(SqStack *S);
 Status StackEmpty(SqStack *S);

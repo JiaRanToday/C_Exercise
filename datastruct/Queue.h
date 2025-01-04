@@ -1,5 +1,6 @@
 #ifndef _QUEUE_H_
 #define _QUEUE_H_
+#include "perror.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -11,7 +12,6 @@ typedef struct {
   int front;
   int tail;
 } SqQueue;
-typedef enum { ERROR = -1, FALSE, TRUE } state;
 state InitQueue(SqQueue *Q);
 int QueueLength(SqQueue *Q);
 state ClearQueue(SqQueue *Q);
