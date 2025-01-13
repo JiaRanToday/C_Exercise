@@ -1,7 +1,7 @@
 #include "Queue.h"
 #include "Stack.h"
-#include "perror.h"
 #include <ctype.h>
+#include <stdio.h>
 typedef enum {
   DIGIT,
   OPERATOR_PRECEDENCE_1,
@@ -31,7 +31,7 @@ void InfixToPostfix(const char *infix, char *postfix) {
   char *pin = (char *)infix;
   int type = Distinguish_OperatorType(*pin);
   int index = 0;
-  while (*pin != '\0') {
+  while (*pin++ != '\0') {
     switch (type) {
     case DIGIT:
       postfix[index++] = *pin;
@@ -40,13 +40,31 @@ void InfixToPostfix(const char *infix, char *postfix) {
       Push(&stack, *pin);
       break;
     case OPERATOR_PRECEDENCE_2:
-      if (stack.top != -1 ||)
-        break;
+      if (!StackEmpty(&stack)) {
+        SElemType e, temp;
+        GetTop(&stack, &e);
+        if (Distinguish_OperatorType(e) == OPERATOR_PRECEDENCE_1) {
+          pop(&stack, &temp);
+          postfix[index++] = temp;
+          Push(&stack, *pin);
+        } else {
+          Push(&stack, *pin);
+        }
+      }
+      break;
     case LEFT_PARENTHESE:
+      Push(&stack, *pin);
       break;
     case RIGHT_PARENTHESE:
+      SElemType e, temp;
+      GetTop(&stack, &e);
+      while (Distinguish_OperatorType(e) != LEFT_PARENTHESE) {
+        pop(&stack, &temp);
+        postfix[index++] = temp;
+      }
       break;
     case NOT_OPERATOR:
+      printf("not a operator ascii");
       break;
     }
   }
