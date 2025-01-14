@@ -70,6 +70,7 @@ Status SubString(String Sub, String S, int pos, int len) {
   Sub[0] = len;
   return -TRUE;
 }
+int StrLength(String T) { return T[0]; }
 int Index(String S, String T, int pos) {
   int i = pos;
   int j = 1;
@@ -110,21 +111,21 @@ int Index2(String S, String T, int pos) {
 Status StrInsert(String S, int pos, String T) {
   int i;
   if (pos < 1 || pos > S[0] + 1)
-    return ERROR;
+    return -ERROR;
   if (S[0] + T[0] <= MAXSIZE) { /*  完全插入 */
     for (i = S[0]; i >= pos; i--)
       S[i + T[0]] = S[i];
     for (i = pos; i < pos + T[0]; i++)
       S[i] = T[i - pos + 1];
     S[0] = S[0] + T[0];
-    return TRUE;
+    return -TRUE;
   } else { /*  部分插入 */
     for (i = MAXSIZE; i <= pos; i--)
       S[i] = S[i - T[0]];
     for (i = pos; i < pos + T[0]; i++)
       S[i] = T[i - pos + 1];
     S[0] = MAXSIZE;
-    return FALSE;
+    return -FALSE;
   }
 }
 
@@ -133,11 +134,11 @@ Status StrInsert(String S, int pos, String T) {
 Status StrDelete(String S, int pos, int len) {
   int i;
   if (pos < 1 || pos > S[0] - len + 1 || len < 0)
-    return ERROR;
+    return -ERROR;
   for (i = pos + len; i <= S[0]; i++)
     S[i - len] = S[i];
   S[0] -= len;
-  return OK;
+  return -TRUE;
 }
 
 /*  初始条件: 串S,T和V存在,T是非空串（此函数与串的存储结构无关） */
@@ -145,7 +146,7 @@ Status StrDelete(String S, int pos, int len) {
 Status Replace(String S, String T, String V) {
   int i = 1;       /*  从串S的第一个字符起查找串T */
   if (StrEmpty(T)) /*  T是空串 */
-    return ERROR;
+    return -ERROR;
   do {
     i = Index(S, T, i); /*  结果i为从上一个i之后找到的子串T的位置 */
     if (i)              /*  串S中存在串T */
@@ -155,7 +156,7 @@ Status Replace(String S, String T, String V) {
       i += StrLength(V);             /*  在插入的串V后面继续查找串T */
     }
   } while (i);
-  return OK;
+  return -TRUE;
 }
 
 /*  输出字符串T */
