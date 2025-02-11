@@ -1,18 +1,4 @@
-#include <stdbool.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-
-typedef int ElemType;
-typedef struct Node {
-  ElemType data;
-  struct Node *prior;
-  struct Node *next;
-} Node;
-
-typedef Node *DoublyLinkList;
-typedef enum { ERROR = -1, FALSE, TRUE } Status;
+#include "Doublelinklist.h"
 
 Status InitList(DoublyLinkList *list) {
   if (list == NULL) {
